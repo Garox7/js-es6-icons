@@ -113,53 +113,59 @@ const iconsArray = [
 	}
 ];
 
-const cardContainer = document.querySelector('.card__container');
-let filterSelect = document.querySelector('#filter');
-
-//creo elementi option (non do fino a che punto abbia senso...)
-const filterAnimalOption = document.createElement('option');
-filterAnimalOption.value = 'Animal';
-filterAnimalOption.innerHTML = 'Animal';
-
-const filterVegetableOption = document.createElement('option');
-filterVegetableOption.value = 'Vegetable';
-filterVegetableOption.innerHTML = 'Vegetable';
-
-const filterUserOption = document.createElement('option');
-filterUserOption.value = 'User';
-filterUserOption.innerHTML = 'User';
-
-filterSelect.append(filterAnimalOption, filterVegetableOption, filterUserOption);
-
 //array corrispondenti alle categorie degli oggetti dell'array principale
 const arrAnimal = iconsArray.filter(arrAnimal => arrAnimal.type === 'animal');
-console.table(arrAnimal);
-
+console.table(arrAnimal); //DEBUG
 const arrVegetable = iconsArray.filter(arrAnimal => arrAnimal.type === 'vegetable');
-console.table(arrVegetable);
-
+console.table(arrVegetable); //DEBUG
 const arrUser = iconsArray.filter(arrAnimal => arrAnimal.type === 'user');
-console.table(arrUser);
+console.table(arrUser); //DEBUG
+
+//creo elementi option in modo dinamico
+function optionElement() {
+	return `
+	<option value="all">All</option>
+	<option value="animal">Animal</option>
+	<option value="vegetable">Vegetable </option>
+	<option value="person">persona</option>`
+}
 
 //funzione che crea le card in base al parametro Array
-function changeFilter(myArray) {
+const cardContainer = document.querySelector('.card__container');
+function createElement(myArray) {
 	myArray.forEach(element => {
 		cardContainer.innerHTML += `
 		<div class="card">
-			<i class="fa-solid fa-${element.name}"></i>
-			<p>${element.name}</p>
+		<i class="fa-solid fa-${element.name}"></i>
+		<p>${element.name}</p>
 		</div>` 
 	});
 }
 
-changeFilter(iconsArray);
+// inserisco gli option all'interno di select
+let filterSelect = document.querySelector('#filter');
+filterSelect.innerHTML = optionElement();
 
-//elementi visibili se il filtro è su All
-// iconsArray.forEach(element => {
-//     cardContainer.innerHTML += `
-//     <div class="card">
-//         <i class="fa-solid fa-${element.name}"></i>
-//         <p>${element.name}</p>
-//     </div>`
+//imposto la visualizzazione di default su all (tutti gli elementi dell'Array originale)
+createElement(iconsArray);
 
-// });
+//cambio il contenuto della pagina in base al filtro scelto
+filterSelect.addEventListener('change', () => {
+	let valueOfFilter = filterSelect.options[filterSelect.selectedIndex].value;
+	
+	cardContainer.innerHTML = '';
+	if (valueOfFilter === 'all'){
+		createElement(iconsArray);
+
+	} else if (valueOfFilter === 'animal') {
+		createElement(arrAnimal);
+
+	} else if (valueOfFilter === 'vegetable') {
+		createElement(arrVegetable)
+
+	} else if (valueOfFilter === 'person') {
+		createElement(arrUser);
+
+	}
+	console.log(valueOfFilter);
+})
