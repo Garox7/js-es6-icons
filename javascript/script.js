@@ -136,7 +136,7 @@ function createElement(myArray) {
 	myArray.forEach(element => {
 		cardContainer.innerHTML += `
 		<div class="card">
-		<i class="fa-solid fa-${element.name}"></i>
+		<i class="fa-solid fa-${element.name}" style="color: ${element.color}"></i>
 		<p>${element.name}</p>
 		</div>` 
 	});
