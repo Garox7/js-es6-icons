@@ -3,3 +3,66 @@
     padding: 0;
     margin: 0;
 }
+
+html {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+/******** HEADER ******+*/
+.header__logo {
+    height: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/******** FILTER ******+*/
+.filter__select {
+    background-color: lightskyblue;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter__select label {
+    color: white;
+    text-transform: uppercase;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+/******** CARD ******+*/
+.card__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.card {
+    flex: 1 1 150px;
+    background-color: aqua;
+    font-size: 28px;
+    padding: 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card i {
+    font-size: 50px;
+    margin-bottom: 1rem;
+}
