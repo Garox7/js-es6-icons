@@ -129,6 +129,15 @@ function optionElement() {
 	<option value="vegetable">Vegetable </option>
 	<option value="person">persona</option>`
 }
+//funzione che genera un colore random
+function getRandomColor() {
+	let numbLetters = '0123456789ABCDEF';
+	let color = '#';
+	for (var i = 0; i < 6; i++) {
+	  color += numbLetters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
 
 //funzione che crea le card in base al parametro Array
 const cardContainer = document.querySelector('.card__container');
@@ -136,7 +145,8 @@ function createElement(myArray) {
 	myArray.forEach(element => {
 		cardContainer.innerHTML += `
 		<div class="card">
-		<i class="fa-solid fa-${element.name}" style="color: ${element.color}"></i>
+		<i class="fa-solid fa-${element.name}" style="color: ${getRandomColor()};
+		"></i>
 		<p>${element.name}</p>
 		</div>` 
 	});
