@@ -127,7 +127,7 @@ function optionElement() {
 	<option value="all">All</option>
 	<option value="animal">Animal</option>
 	<option value="vegetable">Vegetable </option>
-	<option value="person">persona</option>`
+	<option value="person">Person</option>`
 }
 //funzione che genera un colore random
 function getRandomColor() {
@@ -145,7 +145,7 @@ function createElement(myArray) {
 	myArray.forEach(element => {
 		cardContainer.innerHTML += `
 		<div class="card">
-		<i class="fa-solid fa-${element.name}" style="color: ${getRandomColor()};
+		<i class="fa-solid fa-${element.name}" style="color:${getRandomColor()};
 		"></i>
 		<p>${element.name}</p>
 		</div>` 
@@ -161,9 +161,9 @@ createElement(iconsArray);
 
 //cambio il contenuto della pagina in base al filtro scelto
 filterSelect.addEventListener('change', () => {
-	let valueOfFilter = filterSelect.options[filterSelect.selectedIndex].value;
-	
 	cardContainer.innerHTML = '';
+	let valueOfFilter = filterSelect.options[filterSelect.selectedIndex].value;
+
 	if (valueOfFilter === 'all'){
 		createElement(iconsArray);
 
